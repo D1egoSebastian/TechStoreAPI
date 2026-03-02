@@ -1,7 +1,11 @@
 using System.ComponentModel.DataAnnotations;
-public class CreateCategoryDto
+
+namespace TechStoreAPI.DTOs
+{
+    public class CreateCategoryDto
 {
     [Required]
-    public string Name { get; set;}
+    public string? Name { get; set;}
     public string? Description { get; set; }
+}
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TechStoreAPI.Models;
+using TechStoreAPI.DTOs;
 
 [Route("api/[controller]")]
 [ApiController]
