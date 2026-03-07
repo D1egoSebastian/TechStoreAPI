@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TechStoreAPI.Data;
 using TechStoreAPI.Models;
 using TechStoreAPI.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -38,6 +39,7 @@ public class ProductController : ControllerBase {
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> AddProduct([FromBody] CreateProductDto dto)
     {
         if (!ModelState.IsValid)
