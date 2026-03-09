@@ -39,7 +39,7 @@ public class ProductController : ControllerBase {
     }
 
     [HttpPost]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AddProduct([FromBody] CreateProductDto dto)
     {
         if (!ModelState.IsValid)
@@ -118,6 +118,7 @@ public class ProductController : ControllerBase {
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateProduct(int id, [FromBody] CreateProductDto dto)
     {
 
@@ -167,6 +168,7 @@ public class ProductController : ControllerBase {
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
         var producttofind = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);

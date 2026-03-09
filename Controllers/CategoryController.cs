@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TechStoreAPI.Models;
 using TechStoreAPI.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -31,6 +32,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AddCategory([FromBody] CreateCategoryDto dto)
     {
 
@@ -85,7 +87,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateCategory([FromBody] CreateCategoryDto dto, int id)
     {
 
@@ -117,7 +119,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteCategory(int id)
     {
         var categorytofind = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
