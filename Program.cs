@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using CloudinaryDotNet;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -71,18 +70,6 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
-});
-
-// 🔹 Cloudinary
-builder.Services.AddSingleton(sp =>
-{
-    var config = sp.GetRequiredService<IConfiguration>();
-    var account = new Account(
-        config["Cloudinary:CloudName"],
-        config["Cloudinary:ApiKey"],
-        config["Cloudinary:ApiSecret"]
-    );
-    return new Cloudinary(account);
 });
 
 var app = builder.Build();
