@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 using TechStoreAPI.Data;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -62,7 +63,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // 🔹 DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 
