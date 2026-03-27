@@ -50,7 +50,7 @@ public class AuthController : ControllerBase
             };
 
             _context.Users.Add(newUser);
-             await  _context.SaveChangesAsync();
+            await  _context.SaveChangesAsync();
 
             return Created(string.Empty,new
             {
@@ -65,7 +65,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception e)
         {
-         return BadRequest(e.Message);  
+            return BadRequest(e.Message);  
         };
 
         
